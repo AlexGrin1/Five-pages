@@ -15,9 +15,7 @@ function showTime() {
 
   hour = hour % 12 || 12;
 
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
-    sec
-  )} ${shwoAmPm ? amPm : ""}`;
+  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} ${shwoAmPm ? amPm : ""}`;
   setTimeout(showTime, 1000);
 }
 // add zeros
