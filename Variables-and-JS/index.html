@@ -1,117 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scoped CSS Variables and JS</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Scoped CSS Variables and JS</title>
-</head>
-
-<body>
-  <h2 class="shadow">Photo filter with CSS Variables and <span class='hl'>JS</span></h2>
-  <div class="container">
-    <div class="controls">
-      <label for="spacing" class="shadow">Spacing:</label>
-      <input type="range" name="spacing" min="50" max="95" value="80" data-sizing="%">
-      <label for="blur" class="shadow">Blur:</label>
-      <input type="range" name="blur" min="0" max="15" value="0" data-sizing="px">
-      <label for="invert" class="shadow">Invert:</label>
-      <input type="range" name="invert" min="0" max="100" value="0" data-sizing="%">
-      <label for="sepia" class="shadow">Sepia:</label>
-      <input type="range" name="sepia" min="0" max="100" value="0" data-sizing="%">
-      <label for="saturate" class="shadow">Saturate:</label>
-      <input type="range" name="saturate" min="0" max="100" value="100" data-sizing="%">
-      <label for="base" class="shadow">Background color:</label>
-      <input type="color" name="base" value="#033014">
-      <label for="border_color" class="shadow">Border color:</label>
-      <input type="color" name="border_color" value="#DAE44E">
-
+  <body>
+    <h2 class="shadow">
+      Photo filter with CSS Variables and <span class="hl">JS</span>
+    </h2>
+    <div class="container">
+      <div class="controls">
+        <label for="spacing" class="shadow">Spacing:</label>
+        <input
+          type="range"
+          name="spacing"
+          min="50"
+          max="95"
+          value="80"
+          data-sizing="%"
+        />
+        <label for="blur" class="shadow">Blur:</label>
+        <input
+          type="range"
+          name="blur"
+          min="0"
+          max="15"
+          value="0"
+          data-sizing="px"
+        />
+        <label for="invert" class="shadow">Invert:</label>
+        <input
+          type="range"
+          name="invert"
+          min="0"
+          max="100"
+          value="0"
+          data-sizing="%"
+        />
+        <label for="sepia" class="shadow">Sepia:</label>
+        <input
+          type="range"
+          name="sepia"
+          min="0"
+          max="100"
+          value="0"
+          data-sizing="%"
+        />
+        <label for="saturate" class="shadow">Saturate:</label>
+        <input
+          type="range"
+          name="saturate"
+          min="0"
+          max="100"
+          value="100"
+          data-sizing="%"
+        />
+        <label for="base" class="shadow">Background color:</label>
+        <input type="color" name="base" value="#033014" />
+        <label for="border_color" class="shadow">Border color:</label>
+        <input type="color" name="border_color" value="#DAE44E" />
+      </div>
+      <div class="image">
+        <img
+          src="https://i.ytimg.com/vi/baihss8SU7U/maxresdefault.jpg"
+          class="shadow_img"
+        />
+      </div>
     </div>
-    <div class="image">
-      <img src="https://i.ytimg.com/vi/baihss8SU7U/maxresdefault.jpg" class="shadow_img">
-    </div>
-  </div>
-  <style>
-    :root {
-      --base: #033014;
-      --border_color: #DAE44E;
-      --spacing: 80%;
-      --invert: 0;
-      --blur: 0;
-      --sepia: 0;
-      --saturate: 100%;
-    }
+    <style>
+      :root {
+        --base: #033014;
+        --border_color: #dae44e;
+        --spacing: 80%;
+        --invert: 0;
+        --blur: 0;
+        --sepia: 0;
+        --saturate: 100%;
+      }
 
-    .shadow {
-      text-shadow: 0 0 10px black;
-    }
-    .shadow_img {
-      box-shadow:0 0 10px rgb(255, 255, 255);
-    }
+      .shadow {
+        text-shadow: 0 0 10px black;
+      }
+      .shadow_img {
+        box-shadow: 0 0 10px rgb(255, 255, 255);
+      }
 
-    img {
-      width: var(--spacing);
-      padding: 5px;
-      background: var(--border_color);
-      filter: blur(var(--blur)) invert(var(--invert)) sepia(var(--sepia)) saturate(var(--saturate))
-    }
+      img {
+        width: var(--spacing);
+        padding: 5px;
+        background: var(--border_color);
+        filter: blur(var(--blur)) invert(var(--invert)) sepia(var(--sepia))
+          saturate(var(--saturate));
+      }
 
-    .hl {
-      color: var(--border_color);
-    }
+      .hl {
+        color: var(--border_color);
+      }
 
-    body {
-      text-align: center;
-      background: var(--base);
-      color: white;
-      font-family: 'helvetica neue', sans-serif;
-      font-weight: 100;
-      font-size: 50px;
-    }
+      body {
+        text-align: center;
+        background: var(--base);
+        color: white;
+        font-family: "helvetica neue", sans-serif;
+        font-weight: 100;
+        font-size: 50px;
+      }
 
-    .container {
-      display: flex;
-      flex-direction: row;
-      box-sizing: border-box;
-    }
+      .container {
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+      }
 
-    .controls {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: left;
-      justify-content: center;
-      box-sizing: border-box;
-      text-align: left;
-      padding-left: 50px;
+      .controls {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        box-sizing: border-box;
+        text-align: left;
+        padding-left: 50px;
+      }
 
-    }
+      .image {
+        position: relative;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        overflow: auto;
+      }
 
-    .image {
-      position: relative;
-      left: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      box-sizing: border-box;
-    }
+      input {
+        width: 100px;
+      }
+    </style>
 
-    input {
-      width: 100px;
-    }
-  </style>
+    <script>
+      const inputs = document.querySelectorAll(".controls input");
 
-  <script>
-    const inputs = document.querySelectorAll('.controls input');
+      function handleUpdate() {
+        const suffix = this.dataset.sizing || "";
+        document.documentElement.style.setProperty(
+          `--${this.name}`,
+          this.value + suffix
+        );
+      }
 
-    function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-    }
-
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
-  </script>
-
-</body>
-
+      inputs.forEach((input) => input.addEventListener("change", handleUpdate));
+      inputs.forEach((input) =>
+        input.addEventListener("mousemove", handleUpdate)
+      );
+    </script>
+  </body>
 </html>
